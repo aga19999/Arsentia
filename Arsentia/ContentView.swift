@@ -36,7 +36,6 @@ struct ContentView: View {
                         }) {
                             Text(emotion)
                                 .font(.system(size: 20))
-                                .fontWeight(.bold)
                                 .foregroundColor(.black)
                                 .padding()
                                 .frame(width: 183, height: 80, alignment: .leading)
@@ -59,12 +58,28 @@ struct ContentView: View {
                         .scaledToFit()
                         .frame(width: 28, height: 28) // Cambiato l'altezza per una migliore proporzione
                         .foregroundColor(.black)
-                    Spacer() // Questo spinge il testo a sinistra
+                    Spacer(minLength: 5) // Questo spinge il testo a sinistra
                 }
                 .padding() // Aggiungi padding
+                
+                ScrollView(.horizontal) {
+                    HStack(spacing: 10){
+                        //CustomButtonSquare(text: "All", icon: "heart.fill")
+                        CustomButtonSquare(image: Image("ragazzaTurbante"), icon: "heart.fill")
+
+                        CustomButtonSquare(image: Image("theScream"), icon: "heart.fill")
+                            
+                        CustomButtonSquare(image: Image("holeiluck"), icon: "heart.fill")
+                            
+                        CustomButtonSquare(image: Image("monaLisa"), icon: "heart.fill")
+                        
+                    }
+                }
+                .padding()
+                //.background(Color.black)
             }
         }
-        .background(Color(.systemGray5)) // Impostazione dello sfondo della vista a systemGray5
+        .background((Color(red: 0.949, green: 0.949, blue: 0.969)))// Impostazione dello sfondo della vista a systemGray5
     }
 }
 
