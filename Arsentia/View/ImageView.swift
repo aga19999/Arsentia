@@ -13,7 +13,7 @@ struct ImageView: View {
         GeometryReader {
             let size = $0.size
             
-            if let image = post.image {
+            if let image = UIImage(named: post.imageName) {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)

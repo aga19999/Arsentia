@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CustomButtonSquare: View {
-    var image: UIImage? // Accepts UIImage
+    var imageName: String // Accepts UIImage
     var text: String = ""
     var icon: String = "star" // Default icon
     var colorIcon: Color = .white
@@ -12,26 +12,13 @@ struct CustomButtonSquare: View {
             // Add your action here
         }) {
             ZStack {
-                // Background image
-                if let uiImage = image {
-                    Image(uiImage: uiImage) // Convert UIImage to Image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(25)
-                        .clipped()
-                } else {
-                    // Placeholder for when image is nil
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(25)
-                        .overlay(
-                            Text("No Image")
-                                .font(.caption)
-                                .foregroundColor(.white)
-                        )
-                }
+                Image(imageName) // Load image using the name
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 150, height: 150)
+                    .cornerRadius(25)
+                    .clipped()
+            
                 
                 VStack {
                     // Text
@@ -65,7 +52,7 @@ struct CustomButtonSquare: View {
 
 #Preview {
     CustomButtonSquare(
-        image: UIImage(named: "ragazzaTurbante"), // Replace with a real UIImage
+        imageName: "ragazzaTurbante", 
         text: "",
         icon: "",
         colorIcon: .yellow,

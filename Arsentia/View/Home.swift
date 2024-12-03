@@ -9,12 +9,33 @@ import SwiftUI
 
 struct Home: View {
     
+   // @EnvironmentObject private var vm: ViewModel
     
+    @Environment(\.dismiss) var dismiss
     var coordinator: UICoordinator = .init()
-    @State private var posts: [Item] = sampleImages
+    //var posts: [Item] = []
+   // init() {self.posts = vm.items}
+   @State private var posts: [Item] = sampleImages
     var body: some View {
         ScrollView (.vertical) {
             LazyVStack (alignment: .leading, spacing: 15) {
+               
+                Button(action: {dismiss()}) {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 19))
+                            .foregroundColor(.blue)
+                        
+                        Text("Back")
+                            .font(.system(size: 19))
+                            .foregroundColor(.blue)
+                    }
+                }
+               
+                
+                
+                
+                
                 Text("Art Gallery")
                     .font(.largeTitle.bold())
                     .padding(.vertical, 10)
@@ -29,11 +50,13 @@ struct Home: View {
                 
                 
             }
+            
             .padding(15)
             .background(ScrollViewExtractor{
                 coordinator.scrollView = $0
             })
         }
+        
         .opacity(coordinator.hideRootView ? 0 : 1 )
         .scrollDisabled(coordinator.hideRootView)
         .allowsHitTesting(!coordinator.hideRootView)
@@ -65,4 +88,5 @@ struct Home: View {
 
 #Preview {
     FullGallery()
+        //.environmentObject(ViewModel())
 }

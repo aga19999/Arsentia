@@ -12,15 +12,18 @@ struct DescriptionContent: View {
     var body: some View {
         
         LazyVStack(spacing: 15) {
-                    Text(post.title)
-                        .font(.title.bold())
-                        .padding(.vertical, 10)
-                    
-                    Text(post.content)
-                        .multilineTextAlignment(.leading)
-                        .kerning(1.2)
-                }
+            Text(post.title)
+                .font(.title.bold())
+                .padding(.vertical, 10)
+            
+           
+                Text(post.content)
+                    .multilineTextAlignment(.leading)
+                    .kerning(1.2)
+                
+            }
                 .padding(15)
+        
     }
     
     @ViewBuilder

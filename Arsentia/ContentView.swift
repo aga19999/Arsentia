@@ -10,13 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @State private var showWelcomeView = false
     private let debugAlwaysShowSheet = true
-    
+    @StateObject private var vm = ViewModel()
     var body: some View {
         
         HomeView()
+            .environmentObject(vm)
             .sheet(isPresented: $showWelcomeView) {
                 WelcomeView()
-            } //per mettere la view come modale
+            }//per mettere la view come modale
         
             .onAppear {
                 checkFirstLaunch()
